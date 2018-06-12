@@ -4,11 +4,19 @@ h1{
 }
 .container {
     display: flex;
-    margin: 20px;
+    justify-content: space-evenly;
+    margin: 30px;
 }
 
 .container button {
     height: 30px;
     border-radius: 5px;
     font-size: 1.2rem;
+    flex-basis: 25%;
+    border: 1px solid gold;
+}
+
+.container button:hover {
+    cursor: pointer;
+    background-color: goldenrod;
 }

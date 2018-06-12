@@ -3,7 +3,7 @@
 (function () {
     'use strict';
 
-    function getTopGainers() {
+    var  getTopGainers = () => {
         return fetch('https://api.iextrading.com/1.0/stock/market/list/gainers')
             .then(response => response.json())
             .then(data => {
@@ -12,7 +12,7 @@
             });
     }
 
-    function getTopGainersStats() {
+    var getTopGainersStats = () => {
         return getTopGainers().then(symbols => {
             const statsPromises = [];
             symbols.forEach(symbol => {

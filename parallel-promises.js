@@ -3,14 +3,28 @@
 (function () {
     'use strict';
 
-    var  getTopGainers = () => {
+    // Variant 1
+    var getTopGainers1 = () => {
         return fetch('https://api.iextrading.com/1.0/stock/market/list/gainers')
             .then(response => response.json())
             .then(data => {
                 let symbols = data.map(item => item.symbol);
                 return Promise.resolve(symbols);
             });
-    }
+    };
+
+    // Variant 2 - This is easy to understand
+    var getTopGainers = () => {
+        return new Promise((resolve, reject) => {
+            fetch('https://api.iextrading.com/1.0/stock/market/list/gainers')
+                .then(response => response.json())
+                .then(data => {
+                    let symbols = data.map(item => item.symbol);
+                    resolve(symbols);
+                });
+        });
+
+    };
 
     var getTopGainersStats = () => {
         return getTopGainers().then(symbols => {

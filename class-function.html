@@ -1,0 +1,74 @@
+<html>
+
+<body>
+    <h1>JS nInheritence: Class and JS</h1>
+    <script>
+        //////// Functions
+        function Vehicle(name, wheels) {
+             this.name = name;
+             this.wheels = wheels;
+             console.log("🚦🚦🚦 Vehicle construction is being called");
+        }
+        Vehicle.prototype.drive = function() {
+            console.log(`🚦🚦🚦 ${this.name} Vehicle is driving with ${this.wheels} wheels`);
+        }
+        
+        function Car(name, wheels) {
+            // Call the Vehicle constructor with this context
+            Vehicle.call(this, name, wheels);
+            console.log("🏎️🏎️🏎️ Car construction is being called");
+        }
+        
+        // Copy of prototype
+        Car.prototype = Object.create(Vehicle.prototype);
+        // Reset the constructor
+        Car.prototype.constructor = Car;
+
+        // Override the drive method
+        Car.prototype.drive = function() {
+            console.log(`🏎️🏎️🏎️ ${this.name} Car is driving with ${this.wheels} wheels`);
+        }
+
+        const honda = new Car('Honda', 4);
+        honda.drive();
+
+        //////// Class
+        class Animal {
+            constructor(name, legs) {
+                this.name = name;
+                this.legs = legs;
+                console.log(`🐱🐱🐱 Animal ${this.name} created with ${this.legs}`);
+            }
+            makeSound() {
+                console.log(`🐱🐱🐱 ${this.name} with ${this.legs} legs making sound`);
+            }
+            *actions() {
+                yield `${this.name} is resting`;
+                yield `${this.name} is walking`;
+                yield `${this.name} is running`;
+
+            }
+        }
+
+        class WildAnimal extends Animal {
+            constructor(name, legs) {
+                super(name, legs);
+                console.log(`🦁🦁🦁 Wild Animal ${this.name} created with ${this.legs}`);
+            }
+            makeSound() {
+                console.log(`🦁🦁🦁 ${this.name} with ${this.legs} legs making wild sound`);
+            }
+        }
+
+        const lion = new WildAnimal("Lion", 4);
+        lion.makeSound();
+        const actionsIterator = lion.actions();
+        console.log(actionsIterator.next());
+        console.log(actionsIterator.next());
+        console.log(actionsIterator.next());
+        console.log(actionsIterator.next());
+
+    </script>
+</body>
+
+</html>

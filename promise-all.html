@@ -1,20 +1,53 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script defer src="main.js"></script>
-    <script defer src="promise-all.js"></script>
+  <title>Page Title</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+  <script defer src="index.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <button data-page="index.html">Main menu</button>
-    </div>
+  <div class="container">
+    <button data-page="index.html">Main menu</button>
+  </div>
+  <script>
+    /* globals console */
+    /* jshint esversion: 6*/
+    (function () {
+      "use strict";
+      var myPromiseAll = (promises) => {
+        return new Promise((resolve, reject) => {
+          let responses = [];
+
+          promises.forEach((promise) => {
+            promise
+              .then((response) => {
+                responses.push(response);
+                if (responses.length === promises.length) {
+                  resolve(responses);
+                }
+              })
+              .catch((error) => {
+                reject(error);
+              });
+          });
+        });
+      };
+
+      let p1 = new Promise((resolve, reject) =>
+        setTimeout(resolve, 5000, "p1.5000")
+      );
+      let p2 = new Promise((resolve, reject) =>
+        setTimeout(resolve, 1000, "p2.1000")
+      );
+      let p3 = new Promise((resolve, reject) =>
+        setTimeout(resolve, 3000, "p3.3000")
+      );
+
+      myPromiseAll([p1, p2, p3]).then((values) => console.log(values));
+    })();
+  </script>
 </body>
 
 </html>

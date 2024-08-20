@@ -1,0 +1,54 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+	<script defer src="index.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<button data-page="index.html">Main menu</button>
+	</div>
+	<script>
+		/* global console */
+		/*jshint esversion:6 */
+		// When you use 'use strict', the this inside function is not resolved to window object
+		"use strict";
+
+		var vehicle = {
+			drive: function () {
+				console.log('driving...' + this);
+			}
+		};
+		var Car = function () {
+			var wheels = 4;
+			this.driveConfortably = function () {
+				console.log(`Driving comfortably in ${wheels} wheels`);
+			};
+		};
+
+		Car.prototype = vehicle;
+
+		var SUV = function () {
+			this.tow = function () {
+				console.log('Towing another vehicle');
+			};
+		};
+		SUV.prototype = new Car();
+
+		var crv = new SUV();
+		console.log(crv);
+		console.log(vehicle.drive())
+
+		var printHello = function () {
+			console.log(this);
+		}
+
+		console.log(typeof SUV);
+		console.log(typeof crv);
+
+
+	</script>
+</body>
+
+</html>

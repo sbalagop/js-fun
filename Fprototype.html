@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>F.prototype</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <button data-page="index.html">Main menu</button>
+    </div>
+    <script>
+        let Animal = function () {
+            this.eats = true;
+        }
+
+        Animal.prototype.run = function () {
+            console.log("Running");
+        }
+
+        let Lion = function () {
+            Animal.call(this);
+            this.roar = function () {
+                console.log("Roraring");
+            }
+        }
+
+        Lion.prototype = Object.create(Animal.prototype);
+        // It is a good practice if someone doesn’t know Lion, 
+        // but wants to create object using ‘new lion1.constructor();
+        Lion.prototype.constructor = Lion;
+
+
+        var lion1 = new Lion();
+        lion1.run();
+
+    </script>
+</body>
+
+</html>

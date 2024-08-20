@@ -1,0 +1,56 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+	<script defer src="index.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<button data-page="index.html">Main menu</button>
+	</div>
+	<script type="text/javascript">
+		/* global console */
+		'use strict';
+		function duplicate(a) {
+			//return a.concat(a);
+			const len = a.length;
+			for (let i = 0; i < len; i++) {
+				a.push(a[i]);
+			}
+			return a;
+		}
+
+		//console.log(duplicate([1,2,3,4,5]).join()); // [1,2,3,4,5,1,2,3,4,5]
+
+		//Create a for loop that iterates up to 100 while outputting "fizz" 
+		// at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5
+
+		function buzz() {
+			for (let i = 0; i <= 100; i++) {
+				if (i % 15 === 0) {
+					console.log(i + ': fizzbuzz');
+				} else if (i % 3 === 0) {
+					console.log(i + ': fizz');
+				} else if (i % 5 === 0) {
+					console.log(i + ': buzz');
+				}
+			}
+		}
+		//buzz();
+
+		function add(a, b) {
+			if (a && b) {
+				return a + b;
+			} else if (a && !b) {
+				return function (c) {
+					return a + c;
+				};
+			}
+		}
+		console.log(add(4, 5));
+		console.log(add(4)(5));
+	</script>
+</body>
+
+</html>

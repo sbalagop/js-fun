@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Question on prototype</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <button data-page="index.html">Main menu</button>
+    </div>
+    <script>
+        let Rabbit = function (name) {
+            this.name = name;
+        };
+        Rabbit.prototype.sayHello = function () {
+            console.log("Hello " + this.name);
+        }
+        let rabbit1 = new Rabbit('Rabbit 1');
+
+        rabbit.sayHi(); // Hello Rabbit 1
+        Rabbit.prototype.sayHi(); // Hello undefined
+        Object.getPrototypeOf(rabbit).sayHi(); // Hello undefined
+        rabbit.__proto__.sayHi(); // Hello undefined
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script defer src="index.js"></script>
+    <style type="text/css">
+        .ColorBox {
+            color: blue;
+        }
+    </style>
+</head>
+
+<!-- This is body -->
+
+<body>
+    <div class="container">
+        <button data-page="index.html">Main menu</button>
+    </div>
+    <!-- The only div -->
+    <div id="d1"> </div>
+
+    <!-- JAVASCRIPT CODE -->
+    <script type="text/javascript">
+
+        var Flight = {
+            name: "Angel",
+            color: "gray"
+        };
+
+        // Protypical inheritence
+        if (typeof Object.create != 'function') {
+            Object.create = function (o) {
+                var F = function () { };
+                F.prototype = o;
+                return new F();
+            }
+        }
+
+        var Another_Flight = Object.create(Flight);
+        Another_Flight.weight = 18;
+        document.writeln("Siva");
+        document.writeln(Another_Flight.name);
+
+        if (Another_Flight.hasOwnProperty("weight")) {
+            document.writeln(" Another flights weight is" + Another_Flight.weight);
+        }
+        document.writeln("\\n");
+
+        // Reading object properties
+        var prop;
+        for (prop in Another_Flight) {
+            var value = Another_Flight[prop];
+            if (typeof value == 'function') {
+                document.writeln("====");
+                document.writeln(prop + " is a function");
+                document.writeln("====");
+            }
+            else {
+                document.writeln(value);
+            }
+
+        }
+        // Manipulating DIV
+        var d1 = document.getElementById("d1");
+        d1.innerHTML = "<p>How are you?</p>";
+        d1.className = "ColorBox";
+
+
+    </script>
+</body>
+
+</html>

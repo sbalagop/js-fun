@@ -5,7 +5,8 @@
 
 .container {
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 30px;
 }
 
@@ -15,7 +16,8 @@
   font-size: 1.2rem;
   /* flex-basis: 25%; */
   border: 1px solid gold;
-  margin: 10px;
+  padding: 10px;
+  margin: 30px;
 }
 
 .container button:hover {

@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <button data-page="index.html">Main menu</button>
+    </div>
+    <script type="text/javascript">
+        var said = true;
+
+        var sayHello = function () {
+            if (said == false) {
+                var message = "Hello there!";
+                document.writeln(message);
+            }
+            document.writeln(message);
+        }
+
+        sayHello();
+        document.writeln(message);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+	<script defer src="index.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<button data-page="index.html">Main menu</button>
+	</div>
+	<script>
+		/*jshint esversion : 6 */
+		/* global console */
+
+		var Tree = function () {
+
+			// private variables in closure
+			var fruits = 5;
+			var smallBranches = 10;
+
+			// public variables 
+			this.bigBranches = 11;
+
+			this.countFruits = function () {
+				console.log(fruits);
+			};
+
+		};
+
+		Tree.prototype.countBranches = function () {
+			console.log(this.smallBranches);
+			console.log(this.bigBranches);
+		};
+
+		var tree = new Tree();
+		tree.countFruits();
+		tree.countBranches();
+
+	</script>
+</body>
+
+</html>

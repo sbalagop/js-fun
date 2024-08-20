@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+  <script defer src="index.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <button data-page="index.html">Main menu</button>
+  </div>
+  <div id="d1" data-howru="employeeeee"> Siva</div>
+
+  <script type="text/javascript">
+
+    // Agumenting methods     
+    Number.prototype.inty = function () {
+      if (this > 0) {
+        return Math.floor(this);
+      } else {
+        return Math.ceil(this);
+      }
+    }
+
+    // Function call . Either through var or inline function name
+    // Books and other code ueses var option more
+    var howIsThis = function (p1) {
+      document.writeln("How is this:  " + p1);
+      var a = 19.8;
+      document.writeln("...." + a.inty());
+    }
+
+    howIsThis(10);
+    document.writeln("<br></br>");
+    /******************************/
+    // Recursion - Tower of Hanoi
+    /******************************/
+    MoveDisc("S", "A", "D", 3);
+
+    function MoveDisc(S, A, D, n) {
+      if (n <= 0) return;
+
+      MoveDisc(S, D, A, n - 1);
+      document.writeln("Move " + n + " from " + S + " to " + D);
+      document.writeln("<br></br>");
+      MoveDisc(A, S, D, n - 1);
+    }
+
+    /****************************************/
+    // Scope                
+    /****************************************/
+    function sayHello() {
+
+      for (i = 1; i < 2; i++) {
+        var world = "World";
+      }
+      document.writeln(world + "Siva");
+    }
+    sayHello();
+    var d = document.getElementById("d1");
+    document.writeln("THIS IS === " + d.getAttribute("data-howru") + " ===");
+    document.writeln("THIS IS === " + d.dataset.howru + " ===");
+    for (prop in d) {
+      document.writeln(" " + prop + " = " + d[prop] + "  ");
+      document.writeln("</br>");
+    }
+
+  </script>
+</body>

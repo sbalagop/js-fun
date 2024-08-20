@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <div id="d1">
+        <div class="container">
+            <button data-page="index.html">Main menu</button>
+        </div>
+        <div id="d1c1"></div>
+        <div id="d1c2"></div>
+        <div id="d1c3"></div>
+    </div>
+    <div id="d2">
+        <div id="d2c1"></div>
+        <div id="d2c2"></div>
+        <div id="d2c3"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        /****************************************/
+        // Depth First traversal                
+        /****************************************/
+
+        function walkTheTree(node) {
+
+            if (node && node.nodeType == 1) {
+                document.writeln(node.getAttribute('id'));
+            }
+
+            node = node.firstChild;
+
+
+            while (node) {
+                walkTheTree(node);
+                node = node.nextSibling;
+            }
+        }
+
+        walkTheTree(document.body);
+
+        /****************************************/
+        // Breadth First traversal                
+        /****************************************/
+        var children = new Array();
+        children.push(document.body);
+        function breadthFirstTraversal(node) {
+
+            if (node) {
+
+                if (node && node.nodeType == 1) {
+                    document.writeln(" ( " + node.getAttribute("id") + ", " + node.name + " )");
+                    children.splice(children.indexOf(node), 1);
+                }
+
+                var nl = node.children;
+
+                var i;
+                for (i = 0; i < nl.length; i++) {
+                    children.push(nl.item(i));
+                }
+
+                for (i = 0; i < children.length; i++) {
+                    var obj = children[i];
+                    breadthFirstTraversal(obj);
+                }
+            }
+
+        }
+
+        document.writeln("<br></br>")
+        breadthFirstTraversal(document.body);
+
+
+        /****************************************/
+        // Factorial                
+        /****************************************/
+        var factorial = function (a) {
+            a = a || 1;
+            if (a < 2) {
+                return a;
+            }
+
+            return a * factorial((a - 1));
+        }
+
+        document.writeln("<br></br> <span>Factorial of 1: <span>")
+        document.writeln(factorial(4));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <button data-page="index.html">Main menu</button>
+    </div>
+    <div id="d1">
+        <span id="s1">
+            How are you?
+        </span>
+    </div>
+    <script type="text/javascript">
+
+        var fade = function (node) {
+            var level = 1;
+            var step = function () {
+                var hex = level.toString(16);
+                node.style.background = "#FFFF" + hex + hex;
+                if (level < 15) {
+                    level = level + 1;
+                    setTimeout(step, 100);
+                }
+            }
+            setTimeout(step, 100);
+        }
+
+        fade(document.body);
+    </script>
+</body>
+
+</html>

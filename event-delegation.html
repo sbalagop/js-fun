@@ -1,0 +1,45 @@
+<html>
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.1.1.js"
+		integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+	<script defer src="index.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<button data-page="index.html">Main menu</button>
+	</div>
+	<div>
+		<ul id="list">
+			<li><a href="http://www.microsoft.com">Microsoft</a></li>
+			<li><a href="http://www.oracle.com">Oracle</a></li>
+			<li><a href="http://www.google.com">Google</a></li>
+			<ul>
+	</div>
+	<script>
+		/*use strict */
+		/* global console */
+		/*$('#list a').on('click', function(event) {
+			event.preventDefault();
+			console.log($(this).text() + "...");
+		});
+		$('#list').on('click', function(event) {
+			console.log($(this).text() + "---");
+			console.log(event.bubbles);
+		});*/
+
+		// Event delegation
+		$('#list').on('click', 'a', function (event) {
+			console.log($(this).text());
+			$(this).attr('target', '_blank');
+		});
+
+		// IIFE
+		(function foo() { console.log('Hello'); })();
+
+	</script>
+</body>
+
+</html>

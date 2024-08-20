@@ -1,0 +1,38 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+	<script defer src="index.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<button data-page="index.html">Main menu</button>
+	</div>
+	<script>
+		/* global console */
+		"use strict";
+		function printHello(firstName, lastName) {
+			console.log("Hello " + (firstName ? firstName : '') + (lastName ? ' ' + lastName : ''));
+			console.log(this);
+		}
+
+		printHello.apply(this, ['Siva', 'Bala']);
+		printHello.call(this, ...['Siva', 'Bala']);
+
+		var names = {
+			firstName: 'Siva',
+			lastName: 'Bala',
+			printName: function () {
+				console.log('Name is : ' + this.firstName + ' ' + this.lastName);
+			}
+		};
+
+		names.printName();
+		var diffPrintName = names.printName.bind({ firstName: 'Pad', lastName: 'Siva' });
+		diffPrintName();
+
+	</script>
+</body>
+
+</html>

@@ -18,20 +18,20 @@
       "use strict";
       var myPromiseAll = (promises) => {
         return new Promise((resolve, reject) => {
-          let responses = [];
-
-          promises.forEach((promise) => {
-            promise
-              .then((response) => {
-                responses.push(response);
-                if (responses.length === promises.length) {
-                  resolve(responses);
-                }
-              })
-              .catch((error) => {
-                reject(error);
-              });
-          });
+          const responses = new Array(promises.length);
+          let count = 0;
+          for (let i = 0; i < promises.length; i++) {
+            promises[i].then((response) => {
+              console.log(i);
+              responses[i] = response;
+              count++;
+              if (count === promises.length) {
+                resolve(responses);
+              }
+            }).catch((error) => {
+              reject(error);
+            });
+          };
         });
       };
 
